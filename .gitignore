@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build artifacts
+dist/
+build/
+
+# Environment configurations
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Database local runtime & replica set data
+mongodb-rs/
+*.log
+*.err.log
+
+# Uploads & local storage
+uploads/
+server/uploads/
+
+# Coverage & testing artifacts
+coverage/
+scratch/
+test-out.txt
+
+# OS metadata
+.DS_Store
+Thumbs.db
+

@@ -1,0 +1,117 @@
+/* Phase 7 student area — private side of the Phase 6 visual system.
+   Palette/typography tokens come from index.css :root; nothing is redefined here. */
+.student-heading { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 18px; }
+.student-heading h1 { font-size: clamp(2.6rem, 5vw, 4.2rem); line-height: 1; letter-spacing: -.035em; margin-bottom: 0; }
+.student-heading .heading-side { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* Tabs */
+.reg-tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--border); margin-bottom: 28px; overflow-x: auto; scrollbar-width: none; }
+.reg-tabs::-webkit-scrollbar { display: none; }
+.reg-tab { position: relative; background: none; border: 0; color: var(--muted, #9fb3a8); font: inherit; font-size: .92rem; padding: 14px 18px; cursor: pointer; white-space: nowrap; transition: color .25s; }
+.reg-tab:hover { color: var(--text, #f2f5f1); }
+.reg-tab.active { color: var(--text, #f2f5f1); }
+.reg-tab.active::after { content: ''; position: absolute; left: 12px; right: 12px; bottom: -1px; height: 2px; background: var(--green, #00ed64); border-radius: 2px; animation: tab-in .3s var(--ease); }
+@keyframes tab-in { from { transform: scaleX(.4); opacity: 0; } to { transform: scaleX(1); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .reg-tab.active::after { animation: none; } }
+
+/* Registration cards */
+.reg-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); min-width: 0; gap: 22px; }
+.reg-card { border: 1px solid var(--border); background: var(--surface); border-radius: 10px; overflow: hidden; transition: border-color .25s, transform .25s; }
+.reg-card:hover { border-color: #2f4a3a; transform: translateY(-2px); }
+.reg-card-link { display: grid; grid-template-columns: 128px minmax(0, 1fr); min-width: 0; min-height: 148px; overflow-wrap: anywhere; }
+.reg-card-link > * { min-width: 0; }
+.reg-card-link.compact { grid-template-columns: 1fr; }
+.reg-card-image-link { display: block; position: relative; overflow: hidden; min-width: 0; min-height: 148px; }
+.reg-card-image { border-radius: 0; height: 100%; min-height: 148px; min-width: 0; width: 100%; aspect-ratio: auto; }
+.reg-card-title-link { color: inherit; transition: color .25s; }
+.reg-card-title-link:hover { color: var(--green, #00ed64); }
+.reg-card-image .image-fallback > span { font-size: 2.2rem; }
+.reg-card-body { position: relative; z-index: 1; padding: 16px 18px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.reg-card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.reg-when { font-size: .72rem; letter-spacing: .08em; color: var(--muted, #9fb3a8); text-transform: uppercase; }
+.reg-card h3 { font-size: 1.02rem; line-height: 1.35; letter-spacing: -.01em; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.reg-venue { font-size: .8rem; color: var(--muted, #9fb3a8); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.reg-meta { font-size: .72rem; color: #7e938a; margin: 0; }
+.reg-card-actions { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: auto; padding-top: 8px; flex-wrap: wrap; }
+.text-button.danger { color: #ffb6a9; }
+.text-button.danger:hover { color: #ff8f7d; }
+.reg-card-upcoming { border-color: #2c4a38; background: linear-gradient(160deg, var(--surface) 55%, #101b14); }
+
+/* Status badges */
+.reg-status { display: inline-flex; align-items: center; gap: 7px; font-size: .64rem; font-weight: 650; letter-spacing: .14em; text-transform: uppercase; padding: 5px 10px; border-radius: 3px; border: 1px solid transparent; }
+.reg-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.reg-status-registered { color: #7dffb0; background: #0c2a1a; border-color: #1f5b38; }
+.reg-status-cancelled { color: #ffb6a9; background: #2a1512; border-color: #5c2c24; }
+.reg-status-waitlisted { color: #ffe9a8; background: #2a2412; border-color: #5c5124; }
+
+/* Next-event feature on the overview */
+.next-event { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); min-width: 0; border: 1px solid #2c4a3a; border-radius: 12px; overflow: hidden; background: linear-gradient(140deg, #10190f, #0c120e); }
+.next-event .event-image { min-height: 280px; height: 100%; width: 100%; min-width: 0; aspect-ratio: auto; border-radius: 0; }
+.next-event-body { padding: 36px; min-width: 0; overflow-wrap: anywhere; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+.next-event-body .kicker-row { display: flex; align-items: center; gap: 12px; }
+.next-event h2 { font-size: clamp(1.7rem, 3vw, 2.5rem); line-height: 1.08; letter-spacing: -.025em; margin: 0; }
+.next-event .next-meta { color: var(--muted, #9fb3a8); font-size: .88rem; line-height: 1.7; }
+.next-event .reg-card-actions { margin-top: 10px; }
+.section-label { font-size: .69rem; letter-spacing: .19em; text-transform: uppercase; color: #9fb3a8; margin: 0 0 14px; }
+
+/* Account panel */
+.account-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px 22px; margin: 0; }
+.account-facts dt { font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: #7e938a; margin-bottom: 4px; }
+.account-facts dd { margin: 0; font-size: .92rem; overflow-wrap: anywhere; }
+.heading-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* Overview activity rows */
+.activity-list { padding: 0; overflow: hidden; }
+.activity-row { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 16px; padding: 15px 22px; border-bottom: 1px solid var(--border); color: inherit; text-decoration: none; transition: background .2s; }
+.activity-row:last-child { border-bottom: 0; }
+.activity-row:hover { background: #10190f; }
+.activity-title { font-weight: 550; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.activity-meta { color: var(--muted, #9fb3a8); font-size: .78rem; white-space: nowrap; }
+
+/* Registration detail */
+.reg-detail { max-width: 880px; }
+.reg-detail h1 { margin: 0; }
+.detail-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 18px; margin: 0; }
+.detail-facts dt { font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: #7e938a; margin-bottom: 4px; }
+.detail-facts dd { margin: 0; font-size: .95rem; }
+.reg-detail .reg-card-actions { align-items: center; }
+.reg-detail .muted { margin: 0; font-size: .82rem; }
+
+/* Cancel dialog */
+.cancel-dialog p { margin: 0; }
+.cancel-dialog strong { color: var(--text, #f2f5f1); }
+.cancel-dialog-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 6px; }
+.danger-button { background: #ffb6a9; color: #2a0f09; }
+.danger-button:hover { background: #ff8f7d; }
+
+/* Keep the Phase 6 navigation, tightening only signed-in tablet layouts. */
+@media (max-width: 1100px) and (min-width: 761px) {
+  .navbar-authenticated .nav-inner { gap: 18px; }
+  .navbar-authenticated .desktop-nav { gap: 16px; font-size: .76rem; white-space: nowrap; }
+  .navbar-authenticated .nav-account { gap: 12px; font-size: .74rem; min-width: 0; }
+  .navbar-authenticated .account-name { max-width: 90px; min-width: 0; }
+  .navbar-authenticated .nav-account .text-button { white-space: nowrap; }
+}
+
+@media (max-width: 760px) {
+  .reg-card-link { grid-template-columns: 96px 1fr; }
+  .reg-card-image-link { min-height: 116px; }
+  .reg-card-image { min-height: 116px; }
+  .next-event { grid-template-columns: 1fr; }
+  .next-event .event-image { min-height: 180px; }
+  .next-event-body { padding: 24px; }
+  .student-heading h1 { font-size: clamp(2.2rem, 9vw, 2.9rem); }
+}
+@media (max-width: 440px) {
+  .reg-grid { grid-template-columns: 1fr; }
+  .reg-card-link { grid-template-columns: 1fr; }
+  .reg-card-image-link { min-height: 150px; }
+  .reg-card-image { min-height: 150px; height: 150px; }
+  .reg-card-actions { align-items: start; flex-direction: column; gap: 10px; }
+  .account-facts { grid-template-columns: 1fr 1fr; }
+  .cancel-dialog-actions { flex-direction: column; }
+  .cancel-dialog-actions .button { width: 100%; }
+  .activity-row { grid-template-columns: 1fr auto; }
+  .activity-meta { display: none; }
+  .detail-facts { grid-template-columns: 1fr 1fr; }
+}
